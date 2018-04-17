@@ -65,6 +65,7 @@ public class MathEquation {
             {
                 System.out.println("Error invalid opCode");
                 result = 0.0d;
+                break;
             }
         }
     }
