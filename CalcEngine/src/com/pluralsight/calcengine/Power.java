@@ -1,29 +1,29 @@
 package com.pluralsight.calcengine;
 
-public class Subtractor extends CalculateBase implements MathProcessing {
+public class Power extends CalculateBase implements MathProcessing {
 
-    public Subtractor() {
+    public Power() {
     }
 
-    public Subtractor(double leftVal, double rightVal) {
+    public Power(double leftVal, double rightVal) {
         super(leftVal, rightVal);
     }
 
     @Override
     public void calculate() {
-        double value = getLeftVal() - getRightVal();
+        double value = java.lang.Math.pow(getLeftVal(),  getRightVal());
         setResult(value);
     }
 
 
     @Override
     public String getKeyword() {
-        return "subtract";
+        return "power";
     }
 
     @Override
     public char getSymbol() {
-        return '-';
+        return '^';
     }
 
     @Override

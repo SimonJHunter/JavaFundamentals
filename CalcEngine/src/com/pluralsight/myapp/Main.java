@@ -1,11 +1,40 @@
-package com.pluralsight.calcengine;
+package com.pluralsight.myapp;
+
+import com.pluralsight.calcengine.Adder;
+import com.pluralsight.calcengine.CalculateBase;
+import com.pluralsight.calcengine.CalculateHelper;
+import com.pluralsight.calcengine.Divider;
+import com.pluralsight.calcengine.DynamicHelper;
+import com.pluralsight.calcengine.InvalidStatementException;
+import com.pluralsight.calcengine.MathEquation;
+import com.pluralsight.calcengine.MathProcessing;
+import com.pluralsight.calcengine.Multiplier;
+import com.pluralsight.calcengine.Power;
+import com.pluralsight.calcengine.Subtractor;
 
 public class Main {
     public static void main(String[] args) {
 
         //useMathEquation();
         //useCalculatorBase();
+        //useCalculateHelper();
 
+        String[] statements = {
+                "add 25.0 92.0",
+                "subtract 100.0 45.0",
+                "power 5.0 5.0",
+        };
+
+        DynamicHelper helper = new DynamicHelper(new MathProcessing[] {new Adder(), new Subtractor(), new Power()});
+
+        for (String statement:statements) {
+            String output = helper.process(statement);
+            System.out.println(output);
+        }
+
+    }
+
+    static void useCalculateHelper (){
         String[] statements = {
                 "add 1.0",
                 "add xx 25.0",
@@ -30,7 +59,6 @@ public class Main {
                 }
             }
         }
-
     }
 
     static void useCalculatorBase(){
@@ -50,7 +78,7 @@ public class Main {
     }
 
     static void useMathEquation(){
-        MathEquation [] equations = new MathEquation[4];
+        MathEquation[] equations = new MathEquation[4];
         equations[0] = new MathEquation('d',  100.0d, 50.0d);
         equations[1] = new MathEquation('a', 25.0d, 92.0d);
         equations[2] = new MathEquation('s', 225.0d, 17.0d);
